@@ -1,0 +1,29 @@
+{
+  "builders": [{
+    "type": "docker",
+    "image": "centos", 
+    "commit": true,
+    "changes": [
+      "EXPOSE 5672 15672",
+      "VOLUME /scripts /scripts",
+      "ENTRYPOINT /scripts/rabbit-config.sh"
+    ]
+  }],
+
+  "provisioners": [{
+    "type": "shell",
+    "scripts":[
+	 "install-rabbit.sh"
+    ]
+  }],
+
+  "post-processors": [
+    [
+      {
+        "type": "docker-tag",
+        "repository": "rabbit-image",
+        "tag": "3.6.11"
+      }
+    ]
+  ]
+}

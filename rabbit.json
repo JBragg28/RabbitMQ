@@ -22,7 +22,7 @@
       {
         "type": "docker-tag",
         "repository": "rabbit-image",
-        "tag": "3.6.11"
+        "tag": "latest"
       }
     ]
   ]
